@@ -26,6 +26,12 @@ def test_apply_discount(item):
     item.apply_discount()
     assert item.price == 10_000
 
+def test_name():
+    item1 = Item('Смартфон', 1000, 1)
+
+    with pytest.raises(ValueError):
+        item1.name = 'СуперСмартфон'
+
 def test_instantiate_from_csv():
     with open(PATH_CSV_ITEMS) as file:
         data = csv.DictReader(file)
