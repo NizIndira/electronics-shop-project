@@ -27,12 +27,13 @@ class Item:
     @property
     def name(self):
         return self.__name
+
     @name.setter
-    def name(self, name):
-        if len(name) <= 10:
-            self.__name = name
+    def name(self, new_name):
+        if len(new_name) >= 10:
+            raise ValueError('More than 10 letters in the name')
         else:
-            self.__name = name[:10]
+            self.__name = new_name
 
     @classmethod
     def instantiate_from_csv(cls):
