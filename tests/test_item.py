@@ -58,3 +58,9 @@ def test_repr(item):
 
 def test_str(item):
     assert str(item) == 'Смартфон'
+
+
+def test_sum_classes():
+    item1 = Item('Чехол', 200, 25)
+    item2 = Item('Кабель', 500, 5)
+    assert item1 + item2 == 30
