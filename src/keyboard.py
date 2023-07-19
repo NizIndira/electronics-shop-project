@@ -4,13 +4,16 @@ from src.item import Item
 class MixinLang:
 
     def __init__(self):
-        self.language = 'EN'
+        self.__language = 'EN'
 
     def change_lang(self):
-        self.language = {self.language == 'EN': 'RU',
-                         self.language == 'RU': 'EN'}[True]
+        self.__language = {self.__language == 'EN': 'RU',
+                           self.__language == 'RU': 'EN'}[True]
         return self
 
+    @property
+    def language(self):
+        return self.__language
 
 
 class Keyboard(Item, MixinLang):
