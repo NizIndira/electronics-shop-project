@@ -1,8 +1,11 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 import csv
+from pathlib import Path
 
 import pytest
 
+import settings
+import src
 from settings import PATH_CSV_ITEMS
 from src.item import Item
 
@@ -64,3 +67,11 @@ def test_sum_classes():
     item1 = Item('Чехол', 200, 25)
     item2 = Item('Кабель', 500, 5)
     assert item1 + item2 == 30
+
+
+def test_exceptions():
+    TEST_PATH = Path.joinpath(settings.ROOT_PATH, 'tests')
+
+    src.item.DATA_FILE = 'wrong_file.csv'
+    src.item.DATA_PATH = Path.joinpath(settings.SRC_PATH, src.item.DATA_FILE)
+    Item.instantiate_from_csv()
